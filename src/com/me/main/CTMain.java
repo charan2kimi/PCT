@@ -30,7 +30,9 @@ public class CTMain {
 		if(!list.isComplete())
 			System.out.println("Incomplete file");
 		
-		System.out.println(list);
+		for(Account a:list.getAccountList()){
+			System.out.println(a);
+		}
 	}
 
 }

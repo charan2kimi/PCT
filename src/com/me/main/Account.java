@@ -90,5 +90,11 @@ public class Account {
 		}
 		
 	}
+	
+	@Override
+	public String toString(){
+		return accountNumber+"\n"+ (isValid?"VALID":"INVALID")+"\n"+(isValid?"":message);
+		
+	}
 
 }

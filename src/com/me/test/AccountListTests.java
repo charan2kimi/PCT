@@ -20,27 +20,26 @@ public class AccountListTests {
 	}
 
 	@Test(expected = FileNotFoundException.class)
-	public void accountList_isValidFile_failsOnInvalidInput()
-			throws IOException {
+	public void accountList_isValidFile_failsOnNonExistentFile() throws FileNotFoundException{
 		list = new AccountList("garbage");
 
 	}
 
 	@Test
-	public void accountList_isValidFile_passesOnValidInput() throws FileNotFoundException{
+	public void accountList_isValidFile_passesOnValidFile() throws FileNotFoundException{
 		list = new AccountList("src/resources/testInput.txt");
 
 	}
 
 	@Test
-	public void accountList_splitIntoAccounts_failsOnIncompleteInput() throws FileNotFoundException{
+	public void accountList_splitIntoAccounts_returnsFalseOnIncompleteFile() throws FileNotFoundException{
 		list = new AccountList("src/resources/invalidInput.txt");
 		assertFalse(list.isComplete());
 
 	}
 
 	@Test
-	public void accountList_splitIntoAccounts_passesOnValidInput() throws FileNotFoundException {
+	public void accountList_splitIntoAccounts_returnsTrueOnValidFile() throws FileNotFoundException {
 		list = new AccountList("src/resources/testInput.txt");
 		assertTrue(list.isComplete());
 	}

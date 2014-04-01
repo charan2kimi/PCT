@@ -19,20 +19,20 @@ public class AccountTests {
 					}
 	
 	@Test
-	public void account_isValid_failsOnIncompleteEntry(){
+	public void account_isValid_returnsFalseOnIncompleteEntry(){
 		
 		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","");
 		assertFalse(temp.isValid());
 	}
 	
 	@Test
-	public void account_isValid_failsOnInvalidDigit(){
+	public void account_isValid_returnsFalseOnInvalidDigit(){
 		
 		Account temp=new Account("U   _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
 		assertFalse(temp.isValid());
 	}
 	@Test
-	public void account_isValid_passesOnValidNumber(){
+	public void account_isValid_returnsTrueOnValidNumber(){
 		
 		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
 		assertTrue(temp.isValid());
