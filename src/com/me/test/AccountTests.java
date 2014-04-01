@@ -13,36 +13,49 @@ public class AccountTests {
 
 	public AccountTests() throws FileNotFoundException {
 		// TODO Auto-generated constructor stub
-		
-		//AccountList list= new AccountList("src/resources/testInput.txt"); 
-		//this.account = list.getAccountList().get(0);
-					}
-	
+
+		// AccountList list= new AccountList("src/resources/testInput.txt");
+		// this.account = list.getAccountList().get(0);
+	}
+
 	@Test
-	public void account_isValid_returnsFalseOnIncompleteEntry(){
-		
-		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","");
+	public void account_isValid_returnsFalseOnIncompleteEntry() {
+
+		Account temp = new Account("    _  _     _  _  _  _  _ ",
+				"  | _| _||_||_ |_   ||_||_|", "");
 		assertFalse(temp.isValid());
 	}
-	
+
 	@Test
-	public void account_isValid_returnsFalseOnInvalidDigit(){
-		
-		Account temp=new Account("U   _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
+	public void account_isValid_returnsFalseOnInvalidDigit() {
+
+		Account temp = new Account("U   _  _     _  _  _  _  _ ",
+				"  | _| _||_||_ |_   ||_||_|", "  ||_  _|  | _||_|  ||_| _|");
 		assertFalse(temp.isValid());
 	}
+
 	@Test
-	public void account_isValid_returnsTrueOnValidNumber(){
-		
-		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
+	public void account_isValid_returnsTrueOnValidNumber() {
+
+		Account temp = new Account("    _  _     _  _  _  _  _ ",
+				"  | _| _||_||_ |_   ||_||_|", "  ||_  _|  | _||_|  ||_| _|");
 		assertTrue(temp.isValid());
 	}
+
 	@Test
-	public void account_isValid_returnsFalseOnInvalidChecksum(){
-		
-		Account temp=new Account("   __  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
+	public void account_isValid_returnsFalseOnInvalidChecksum() {
+
+		Account temp = new Account("   __  _     _  _  _  _  _ ",
+				"  | _| _||_||_ |_   ||_||_|", "  ||_  _|  | _||_|  ||_| _|");
 		assertFalse(temp.isValid());
 	}
 	
+	@Test
+	public void account_isValid_returnsTrueOnValidChecksum() {
+
+		Account temp = new Account("    _  _  _  _  _  _     _ ",
+				"  || || || || || || |  || |", "  ||_||_||_||_||_||_|  ||_|");
+		assertTrue(temp.isValid());
+	}
 
 }

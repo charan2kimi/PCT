@@ -107,14 +107,26 @@ public class Account {
 		return digit;
 		
 	}
-	public boolean validateChecksum(){
+	public void validateChecksum(){
+		if(!isValid)
+			return;
+		int sum=0;
 		
-			return false;
+		for(int i=9;i>0;i--){
+			sum+=Integer.parseInt(number.get(i-1))*(10-i);
+		}
+		
+		
+		isValid = ((sum%11)==0);
+		if(!isValid)
+			message="Invalid Checksum";
+		
+		
 	}
 	
 	@Override
 	public String toString(){
-		return accountNumber+"\n"+ (isValid?"VALID":"INVALID")+"\n"+(isValid?"":message);
+		return accountNumber+"\n"+ (isValid?"VALID":"INVALID")+"\n"+(isValid?"":message+"\n");
 		
 	}
 
