@@ -2,14 +2,13 @@ package com.me.test;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import junit.framework.Assert;
+
 
 import org.junit.Test;
-import org.junit.experimental.theories.Theory;
+
 
 import com.me.main.AccountList;
 
@@ -34,12 +33,15 @@ public class AccountListTests {
 	}
 
 	@Test
-	public void accountList_splitIntoAccounts_failsOnIncompleteInput()
-			throws IOException {
+	public void accountList_splitIntoAccounts_failsOnIncompleteInput() throws FileNotFoundException{
 		list = new AccountList("src/resources/invalidInput.txt");
-		assertFalse(list.IsComplete);
+		assertFalse(list.isComplete());
 
 	}
 
-	
+	@Test
+	public void accountList_splitIntoAccounts_passesOnValidInput() throws FileNotFoundException {
+		list = new AccountList("src/resources/testInput.txt");
+		assertTrue(list.isComplete());
+	}
 }

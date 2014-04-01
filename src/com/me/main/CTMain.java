@@ -27,7 +27,7 @@ public class CTMain {
 		
 
 		list = new AccountList(br.readLine());
-		if(!list.IsComplete)
+		if(!list.isComplete())
 			System.out.println("Incomplete file");
 		
 		System.out.println(list);

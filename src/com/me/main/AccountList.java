@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountList {
-	private List<Account> accountList;
+	private  List<Account> accountList;
 	private BufferedReader reader;
-	public boolean IsComplete =false;
+	private boolean isComplete = true;
 
 	public AccountList(String location) throws FileNotFoundException {
 
@@ -20,11 +20,41 @@ public class AccountList {
 		splitIntoAccounts();
 	}
 
+	public List<Account> getAccountList() {
+		return accountList;
+	}
+
+	public boolean isComplete() {
+		return this.isComplete;
+	}
+
 	// Split the file to get each account number
-	// Check if any incomplete account numbers
+	// Check if any incomplete account numbers but do not fail
 
 	public void splitIntoAccounts() {
-		
-		IsComplete = false;
+		String r1, r2, r3, blank;
+		try {
+			while ((r1 = reader.readLine()) != null) {
+				
+				if ((r2 = reader.readLine()) != null
+						&& (r3 = reader.readLine()) != null) {
+					Account account = new Account(r1, r2, r3);
+
+					accountList.add(account);
+
+				} else
+					this.isComplete = false;
+				
+				blank = reader.readLine();// leave out the blank
+			}
+			if(accountList.size()==0)
+				this.isComplete = false;
+			reader.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
