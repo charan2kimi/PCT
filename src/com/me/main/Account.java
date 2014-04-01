@@ -1,10 +1,14 @@
 package com.me.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
 
 	private String row1, row2, row3, message;
 	private boolean isValid;
 	private StringBuffer accountNumber;
+	private List<String> number;
 	
 	private static final String ZERO=" _ | ||_|";
 	private static final String ONE="     |  |";
@@ -22,10 +26,12 @@ public class Account {
 	public Account(String row1, String row2, String row3) {
 		isValid=true;
 		accountNumber=new StringBuffer();
+		number=new ArrayList<String>();
 		this.row1 = row1;
 		this.row2 = row2;
 		this.row3 = row3;
 		parse();
+		validateChecksum();
 	}
 
 	public String getMessage() {
@@ -58,37 +64,52 @@ public class Account {
 	private String getDigit(String d1, String d2, String d3){
 		
 		String graph= d1+d2+d3;
-		
+		String digit;
 		switch (graph) {
 		case ZERO:
-			return "0";
+			digit = "0";
+			break;
 		case ONE:
-			return "1";
+			digit = "1";
+			break;
 		case TWO:
-			return "2";
+			digit = "2";
+			break;
 		case THREE:
-			return "3";
+			digit = "3";
+			break;
 		case FOUR:
-			return "4";
+			digit = "4";
+			break;
 		case FIVE:
-			return "5";
+			digit = "5";
+			break;
 		case SIX:
-			return "6";
+			digit = "6";
+			break;
 		case SEVEN:
-			return "7";
+			digit = "7";
+			break;
 		case EIGHT:
-			return "8";
+			digit = "8";
+			break;
 		case NINE:
-			return "9";
-		
+			digit = "9";
+		break;
 			
-
 		default:
 			isValid=false;
 			message="Invalid Digit Encountered";
-			return "#";
+			digit = "#";
 		}
+		//if(!digit.equals("#"))
+			number.add(digit);
+		return digit;
 		
+	}
+	public boolean validateChecksum(){
+		
+			return false;
 	}
 	
 	@Override

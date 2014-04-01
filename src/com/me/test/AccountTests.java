@@ -37,6 +37,12 @@ public class AccountTests {
 		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
 		assertTrue(temp.isValid());
 	}
+	@Test
+	public void account_isValid_returnsFalseOnInvalidChecksum(){
+		
+		Account temp=new Account("   __  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
+		assertFalse(temp.isValid());
+	}
 	
 
 }
