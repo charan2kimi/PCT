@@ -21,7 +21,14 @@ public class AccountTests {
 	@Test
 	public void account_isValid_failsOnIncompleteEntry(){
 		
-		Account temp=new Account("  _  _     _  _  _  _  _","  | _| _||_||_ |_   ||_||_|","");
+		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","");
+		assertFalse(temp.isValid());
+	}
+	
+	@Test
+	public void account_isValid_failsOnInvalidDigit(){
+		
+		Account temp=new Account("    _  _     _  _  _  _  _ ","  | _| _||_||_ |_   ||_||_|","  ||_  _|  | _||_|  ||_| _|");
 		assertFalse(temp.isValid());
 	}
 
